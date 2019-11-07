@@ -38,4 +38,28 @@ function weatherInfo(cityName) {
   
     // wind speed
     const wind = data.wind.speed;
+    //sunset & sunrise
+  const secSunrise = data.sys.sunrise;
+  const secSunset = data.sys.sunset;
+
+  /**
+   *
+   *convert the seconds to the local time
+   * @param {*} sec
+   */
+  function convertTime(sec) {
+    const time = new Date(sec * 1000);
+    return time.toLocaleTimeString(navigator.language, {
+      hour: "2-digit",
+      minute: "2-digit"
+    });
+  const timeSunrise = convertTime(secSunrise);
+  const timeSunset = convertTime(secSunset);
+   // cloudy
+   const cloudsData = data.weather[0].description;
+   const cloudiness = cloudsData.charAt(0).toUpperCase() + cloudsData.slice(1);
+   const tableDataLi = document.createElement("li");
+   const tableDataUl = document.querySelector(".table .table-data");
+   const tableTitle = document.querySelector(".table .table-title");
+  }
   }
