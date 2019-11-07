@@ -137,3 +137,9 @@ btnCurrentLocation.addEventListener("click", () => {
     );
   });
 });
+window.addEventListener("load", () => {
+    if (localStorage.getItem("city") !== null) {
+      const data = JSON.parse(localStorage.getItem("city"));
+      displayWeatherInfo(data);
+    }
+  });
