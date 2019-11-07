@@ -53,6 +53,7 @@ function weatherInfo(cityName) {
       hour: "2-digit",
       minute: "2-digit"
     });
+} 
   const timeSunrise = convertTime(secSunrise);
   const timeSunset = convertTime(secSunset);
    // cloudy
@@ -61,5 +62,16 @@ function weatherInfo(cityName) {
    const tableDataLi = document.createElement("li");
    const tableDataUl = document.querySelector(".table .table-data");
    const tableTitle = document.querySelector(".table .table-title");
-  }
+  
+  tableTitle.style.display = "block";
+  tableDataUl.innerHTML = "";
+  tableDataLi.innerHTML = `
+            <ul>
+                <li>${wind}</li>
+                <li>${timeSunrise}</li>
+                <li>${timeSunset}</li>
+                <li>${cloudiness}</li>
+            </ul>
+        `;
+  tableDataUl.appendChild(tableDataLi);
   }
