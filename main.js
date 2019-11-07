@@ -101,6 +101,20 @@ function displayWeatherInfo(data) {
   const longitude = data.coord.lon;
   renderLocationOnGoogleMap(latitude, longitude);
 }
+/**
+ *render the location using latitude and longitude
+ *
+ * @param {*} lat
+ * @param {*} lng
+ */
+function renderLocationOnGoogleMap(lat, lng) {
+    const mapDiv = document.querySelector("#map");
+    const map = new google.maps.Map(mapDiv, {
+      center: { lat, lng },
+      zoom: 8
+    });
+    console.log(map);
+  }
 cityNameInput.addEventListener("keyup", event => {
   event.preventDefault();
   if (event.keyCode === 13) {
