@@ -20,6 +20,8 @@ function weatherInfo(cityName) {
   )
     .then(resp => resp.json())
     .then(json => {
+        localStorage.clear();
+        localStorage.setItem("city", JSON.stringify(json));  
       displayWeatherInfo(json);
     });
 }
