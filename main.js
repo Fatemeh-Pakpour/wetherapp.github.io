@@ -75,3 +75,26 @@ function weatherInfo(cityName) {
         `;
   tableDataUl.appendChild(tableDataLi);
   }
+  cityNameInput.addEventListener("keyup", (event) => {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+      btnWeather.click();
+    }
+    if (cityNameInput.value === "") {
+      alert("Enter your city name");
+    }
+    weatherInfo(cityNameInput.value);
+   
+  });
+  btnCurrentLocation.addEventListener("click", () => {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      const currentLocation = {
+        longitude: position.coords.longitude,
+        latitude: position.coords.latitude
+      };
+      weatherInfoCurrentLocation(
+        currentLocation.latitude,
+        currentLocation.longitude
+      );
+    });
+  });
