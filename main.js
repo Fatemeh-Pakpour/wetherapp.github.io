@@ -20,6 +20,22 @@ function weatherInfo(cityName) {
     )
       .then(resp => resp.json())
       .then(json => {
-       console.log(json);
+        displayWeatherInfo(json);
       });
+  }
+  function displayWeatherInfo(data) {
+    // weather icon
+  
+    const iconCode = data.weather[0].icon;
+    const iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+    document.querySelector("#weather-icon").setAttribute("src", iconUrl);
+  
+    // location
+    document.querySelector("#location").innerHTML = data.name;
+  
+    // temperature
+    document.querySelector("#temp").innerHTML = `${data.main.temp} &degC`;
+  
+    // wind speed
+    const wind = data.wind.speed;
   }
